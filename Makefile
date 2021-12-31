@@ -8,6 +8,14 @@ purge:
 	sudo apt update
 	sudo apt remove ubuntu-mate-welcome
 
+# attempt to install python2 pip2 to compile legacy stuff
+python2:
+	sudo apt install python2.7-minimal
+	sudo apt install python-is-python2
+	wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+	sudo python2.7 get-pip.py
+	rm get-pip.py
+
 # androidtools dev stuff
 android:
 	sudo apt install android-sdk android-sdk-platform-23 
