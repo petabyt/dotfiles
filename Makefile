@@ -32,26 +32,24 @@ $(HOME)/Gtcc:
 $(HOME)/School:
 	mkdir ~/School
 
-# Configure micro custom syntax
-MICRO_SYNTAX=$(HOME)/.config/micro/syntax
-MICRO_SYNTAX:
-	mkdir MICRO_SYNTAX
+MICRO_SYNTAX/arm.yaml: MICRO_SYNTAX
+	cd MICRO_SYNTAX; wget https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/caeaa09708fb5048559b4a3e4be119576e17f792/micro.yaml
 
-MICRO_SYNTAX/arm.yaml:
-	wget https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/caeaa09708fb5048559b4a3e4be119576e17f792/micro.yaml
+MICRO_SYNTAX/skript.yaml: MICRO_SYNTAX
+	cd MICRO_SYNTAX; https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/2dfdfe258c4d38e3e41715575c9b9a06d8bd90e9/skript.yaml
 
-MICRO_SYNTAX/skript.yaml:
-	https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/2dfdfe258c4d38e3e41715575c9b9a06d8bd90e9/skript.yaml
-	
+# Nice text editor
+/bin/micro: MICRO_SYNTAX/arm.yaml MICRO_SYNTAX/skript.yaml
+	cd curl https://getmic.ro | bash
+	sudo mv micro /bin/micro
+
 # variables
 exports:
 	echo 'export PATH=$PATH:~/gcc-arm-none-eabi/bin' >> ~/.bashrc
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
 
-# Nice text editor
-/bin/micro:
-	cd curl https://getmic.ro | bash
-	sudo mv micro /bin/micro
-
+# thinkpad tweak
+# See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11
 thinkpad:
 	echo "export MOZ_USE_XINPUT2=1" >> /etc/environment
+	sudo apt install fprintd
