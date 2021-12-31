@@ -72,7 +72,7 @@ $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
-# TODO: put in /etc/environment maybe
+# TODO: put in /etc/profile maybe
 exports:
 	echo 'export PATH=$PATH:~/gcc-arm-none-eabi/bin' >> ~/.bashrc
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
@@ -81,5 +81,5 @@ exports:
 # See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11
 thinkpad:
 	# Fix janky Firefox scrolling
-	echo "export MOZ_USE_XINPUT2=1" >> /etc/environment
+	echo "export MOZ_USE_XINPUT2=1" >> /etc/profile
 	sudo apt install fprintd
