@@ -28,11 +28,12 @@ android:
 	sudo cp -a android-sdk-licenses/*-license /usr/lib/android-sdk/licenses 
 	rm -rf android-sdk-licenses
 
-# Decent compiler
+# Decent arm compiler
 $(HOME)/gcc-arm-none-eabi:
 	cd ~/Downloads; wget "https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2?revision=111dee36-f88b-4672-8ac6-48cf41b4d375?product=GNU%20Arm%20Embedded%20Toolchain%20Downloads,32-bit,,Linux,5-2016-q3-update"
 	cd ~/Downloads; tar -xzf gcc*; mv gcc* ~/gcc-arm-none-eabi
 
+# Spiffy folders
 $(HOME)/Pulled:
 	mkdir ~/Pulled
 $(HOME)/Gtcc:
@@ -40,19 +41,22 @@ $(HOME)/Gtcc:
 $(HOME)/School:
 	mkdir ~/School
 
-MICRO_SYNTAX:
-	mkdir -p $(HOME)/.config/micro/syntax
+# Nice text editor
+MICRO_SYNTAX=$(HOME)/.config/micro/syntax
+$(MICRO_SYNTAX):
+	mkdir -p $(MICRO_SYNTAX)
 
-MICRO_SYNTAX/arm.yaml: MICRO_SYNTAX
+$(MICRO_SYNTAX)/arm.yaml: $(MICRO_SYNTAX)
 	cd MICRO_SYNTAX; wget https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/caeaa09708fb5048559b4a3e4be119576e17f792/micro.yaml
 
-MICRO_SYNTAX/skript.yaml: MICRO_SYNTAX
+$(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 	cd MICRO_SYNTAX; https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/2dfdfe258c4d38e3e41715575c9b9a06d8bd90e9/skript.yaml
 
-# Nice text editor
-/bin/micro: MICRO_SYNTAX/arm.yaml MICRO_SYNTAX/skript.yaml
+/bin/micro:
 	cd curl https://getmic.ro | bash
 	sudo mv micro /bin/micro
+
+text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
 exports:
