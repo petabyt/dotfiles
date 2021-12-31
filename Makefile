@@ -1,7 +1,13 @@
 $(HOME)=$(shell echo ~)
 
 help:
-	echo "lib purge python2 android dconf text-editor exports thinkpad folders arm-cc"
+	echo "copydot lib purge python2 android dconf text-editor exports thinkpad folders arm-cc"
+
+fresh: copydot folders purge lib python2 android arm-cc text-editor exports
+
+copydot:
+	dconf load / < .dconf
+	cp .gitconfig ~/
 
 lib:
 	sudo apt update
@@ -31,9 +37,6 @@ android:
 	sudo cp -a android-sdk-licenses/*-license /usr/lib/android-sdk/licenses 
 	rm -rf android-sdk-licenses
 
-dconf:
-	dconf load / < .dconf
-
 arm-cc: $(HOME)/gcc-arm-none-eabi
 
 # Decent arm compiler
@@ -57,10 +60,10 @@ $(MICRO_SYNTAX):
 	mkdir -p $(MICRO_SYNTAX)
 
 $(MICRO_SYNTAX)/arm.yaml: $(MICRO_SYNTAX)
-	cd MICRO_SYNTAX; wget https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/caeaa09708fb5048559b4a3e4be119576e17f792/micro.yaml
+	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/caeaa09708fb5048559b4a3e4be119576e17f792/micro.yaml; mv micro.yaml arm.yaml
 
 $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
-	cd MICRO_SYNTAX; https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/2dfdfe258c4d38e3e41715575c9b9a06d8bd90e9/skript.yaml
+	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/2dfdfe258c4d38e3e41715575c9b9a06d8bd90e9/skript.yaml
 
 /bin/micro:
 	cd curl https://getmic.ro | bash
@@ -69,6 +72,7 @@ $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
+# TODO: put in /etc/environment maybe
 exports:
 	echo 'export PATH=$PATH:~/gcc-arm-none-eabi/bin' >> ~/.bashrc
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
@@ -76,5 +80,6 @@ exports:
 # thinkpad tweak
 # See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11
 thinkpad:
+	# Fix janky Firefox scrolling
 	echo "export MOZ_USE_XINPUT2=1" >> /etc/environment
 	sudo apt install fprintd
