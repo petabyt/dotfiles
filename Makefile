@@ -11,7 +11,7 @@ copydot:
 
 lib:
 	sudo apt update
-	sudo apt install golang wget curl dillo links build-essential git xclip
+	sudo apt install golang wget curl dillo links build-essential git xclip caja-open-terminal
 
 purge:
 	sudo apt update
