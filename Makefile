@@ -40,6 +40,9 @@ $(HOME)/Gtcc:
 $(HOME)/School:
 	mkdir ~/School
 
+MICRO_SYNTAX:
+	mkdir -p $(HOME)/.config/micro/syntax
+
 MICRO_SYNTAX/arm.yaml: MICRO_SYNTAX
 	cd MICRO_SYNTAX; wget https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/caeaa09708fb5048559b4a3e4be119576e17f792/micro.yaml
 
