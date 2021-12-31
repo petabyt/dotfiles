@@ -8,6 +8,18 @@ purge:
 	sudo apt update
 	sudo apt remove ubuntu-mate-welcome
 
+# androidtools dev stuff
+android:
+	sudo apt install android-sdk android-sdk-platform-23 
+	sudo apt install google-android-ndk-installer
+	sudo apt install cmake
+
+	# Accept SDK licenses
+	@echo 'Accepting license..'
+	git clone https://github.com/Shadowstyler/android-sdk-licenses.git
+	sudo cp -a android-sdk-licenses/*-license /usr/lib/android-sdk/licenses 
+	rm -rf android-sdk-licenses
+
 # Decent compiler
 $(HOME)gcc-arm-none-eabi:
 	cd ~/Downloads; wget "https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2?revision=111dee36-f88b-4672-8ac6-48cf41b4d375?product=GNU%20Arm%20Embedded%20Toolchain%20Downloads,32-bit,,Linux,5-2016-q3-update"
@@ -30,7 +42,6 @@ MICRO_SYNTAX/arm.yaml:
 
 MICRO_SYNTAX/skript.yaml:
 	https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/2dfdfe258c4d38e3e41715575c9b9a06d8bd90e9/skript.yaml
-
 	
 # variables
 exports:
