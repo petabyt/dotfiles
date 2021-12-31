@@ -7,12 +7,18 @@ gcc:
 	cd ~/Downloads; tar -xzf gcc*
 
 setup:
+	# Folders I like
 	mkdir ~/Pulled
 	mkdir ~/Gtcc
 	mkdir ~/School
 	
+	# bashrc stuff
 	echo 'export PATH=$PATH:~/gcc-arm-none-eabi-5_4-2016q3/bin' >> ~/.bashrc
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
 	echo 'export PATH=$PATH:~/$(PWD)' >> ~/.bashrc
 	
+	# Favorite text editor
 	curl https://getmic.ro | bash; cp micro /bin/; rm micro
+
+thinkpad:
+	echo "export MOZ_USE_XINPUT2=1" >> /etc/environment
