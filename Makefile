@@ -1,5 +1,8 @@
 $(HOME)=$(shell echo ~)
 
+help:
+	echo "lib purge python2 android dconf text-editor exports thinkpad folders arm-cc"
+
 lib:
 	sudo apt update
 	sudo apt install golang wget curl dillo links build-essential git xclip
@@ -31,10 +34,14 @@ android:
 dconf:
 	dconf load / < .dconf
 
+arm-cc: $(HOME)/gcc-arm-none-eabi
+
 # Decent arm compiler
 $(HOME)/gcc-arm-none-eabi:
 	cd ~/Downloads; wget "https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2?revision=111dee36-f88b-4672-8ac6-48cf41b4d375?product=GNU%20Arm%20Embedded%20Toolchain%20Downloads,32-bit,,Linux,5-2016-q3-update"
 	cd ~/Downloads; tar -xzf gcc*; mv gcc* ~/gcc-arm-none-eabi
+
+folders: $(HOME)/Pulled $(HOME)/Gtcc $(HOME)/School
 
 # Spiffy folders
 $(HOME)/Pulled:
