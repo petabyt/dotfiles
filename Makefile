@@ -68,6 +68,7 @@ $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 /bin/micro:
 	cd curl https://getmic.ro | bash
 	sudo mv micro /bin/micro
+	micro -plugin install filemanager
 
 text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
