@@ -16,3 +16,33 @@ visible-name='Default'
 [org/gnome/desktop/media-handling]
 automount=false
 automount-open=false
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=true
+show-size-column=true
+show-type-column=true
+sidebar-width=140
+sort-column='modified'
+sort-directories-first=true
+sort-order='descending'
+type-format='category'
+window-position=(183, 115)
+window-size=(993, 560)
+
+[org/mate/caja/desktop]
+computer-icon-visible=true
+trash-icon-name='crap'
+volumes-visible=false
+
+[org/mate/caja/preferences]
+always-use-location-entry=true
+
+[org/mate/caja/window-state]
+geometry='708x544+0+148'
+maximized=false
+sidebar-width=196
+start-with-sidebar=true
+start-with-status-bar=true
+start-with-toolbar=true
