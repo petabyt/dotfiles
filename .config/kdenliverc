@@ -1,0 +1,126 @@
+[KFileDialog Settings]
+Recent Files[$e]=file:///media/daniel/EOS_DIGITAL/untitled-f000104.png,file:///media/daniel/EOS_DIGITAL/untitled-f000104.png
+Recent URLs[$e]=file:///media/daniel/EOS_DIGITAL/
+detailViewIconSize=0
+
+[MainWindow]
+Height 768=683
+State=AAAA/wAAAAD9AAAAAQAAAAIAAAVIAAABi/wBAAAADvsAAAAYAG4AbwB0AGUAcwBfAHcAaQBkAGcAZQB0AAAAAAD/////AAAARwD////7AAAADgBsAGkAYgByAGEAcgB5AAAAAAD/////AAAATwD////7AAAAFABzAGMAcgBlAGUAbgBnAHIAYQBiAAAAAAD/////AAAARwD////7AAAAGgBhAHUAZABpAG8AcwBwAGUAYwB0AHIAdQBtAAAAAAD/////AAAAawD////7AAAAFgBwAHIAbwBqAGUAYwB0AF8AYgBpAG4BAAAAAAAAALMAAABHAP////wAAAC3AAABNQAAAEcA////+gAAAAABAAAAAvsAAAAYAGUAZgBmAGUAYwB0AF8AcwB0AGEAYwBrAQAAAAD/////AAAARwD////7AAAAHgBjAGwAaQBwAF8AcAByAG8AcABlAHIAdABpAGUAcwAAAAAA/////wAAAEcA/////AAAAfAAAADSAAAAeQD////6AAAAAQEAAAAC+wAAAB4AdAByAGEAbgBzAGkAdABpAG8AbgBfAGwAaQBzAHQBAAAAAP////8AAAAAAP////sAAAAWAGUAZgBmAGUAYwB0AF8AbABpAHMAdAEAAAAA/////wAAAAAA/////AAAAsYAAAKCAAABQAD////6AAAAAQEAAAAC+wAAABgAYwBsAGkAcABfAG0AbwBuAGkAdABvAHIBAAAAAP////8AAAFAAP////sAAAAeAHAAcgBvAGoAZQBjAHQAXwBtAG8AbgBpAHQAbwByAQAAAAD/////AAABQAD////7AAAAGAB1AG4AZABvAF8AaABpAHMAdABvAHIAeQAAAAAA/////wAAAEcA////+wAAAAoAbQBpAHgAZQByAAAAAAD/////AAAATgD////7AAAAFgB2AGUAYwB0AG8AcgBzAGMAbwBwAGUAAAAAAP////8AAAE/AP////sAAAAQAHcAYQB2AGUAZgBvAHIAbQAAAAAA/////wAAAK0A////+wAAABQAcgBnAGIAXwBwAGEAcgBhAGQAZQAAAAAA/////wAAAKcA////+wAAABIAaABpAHMAdABvAGcAcgBhAG0AAAAAAP////8AAAE/AP///wAABUgAAAEGAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAGABlAHgAdAByAGEAVABvAG8AbABCAGEAcgAAAAId/////wAAAAAAAAAA
+StatusBar=Disabled
+ToolBarsMovable=Disabled
+Width 1360=1352
+Width 1366=1366
+Window-Maximized 768x1366=true
+
+[MainWindow][Toolbar timelineToolBar]
+ToolButtonStyle=IconOnly
+
+[Recent Dirs]
+KdenliveClipFolder[$e]=$HOME/Videos,$HOME/Documents
+KdenliveFramesFolder[$e]=/media/daniel/EOS_DIGITAL/,$HOME/Documents
+KdenliveProjectsFolder[$e]=/media/daniel/WinToUSB/,$HOME/Videos,$HOME/Documents
+KdenliveSlideShowFolder[$e]=$HOME/Documents/nasa-rip/vid-1/,$HOME/Documents
+
+[Recent Files]
+File1[$e]=$HOME/Videos/kdetest.kdenlive
+File2[$e]=$HOME/Videos/test.kdenlive
+File3[$e]=$HOME/Videos/trackpad cleaning.kdenlive
+File4[$e]=$HOME/Videos/reactos.kdenlive
+File5[$e]=/media/daniel/WinToUSB/beamng-interstellar.kdenlive
+Name1[$e]=kdetest.kdenlive
+Name2[$e]=test.kdenlive
+Name3[$e]=trackpad cleaning.kdenlive
+Name4[$e]=reactos.kdenlive
+Name5[$e]=beamng-interstellar.kdenlive
+
+[Scope_Histogram]
+autoRefresh=true
+bEnabled=true
+gEnabled=true
+rEnabled=true
+realtime=false
+rec601=false
+sEnabled=false
+yEnabled=true
+
+[Scope_RGB Parade]
+autoRefresh=true
+axis=false
+gradref=false
+paintmode=0
+realtime=false
+
+[Scope_Vectorscope]
+75PBox=false
+autoRefresh=true
+axis=false
+backgroundmode=0
+colorspace_ypbpr=false
+gain=1
+iqlines=false
+paintmode=0
+realtime=false
+
+[Scope_Waveform]
+autoRefresh=true
+paintmode=0
+realtime=false
+rec601=false
+
+[UiSettings]
+ColorScheme=Breeze Dark
+
+[bin]
+treeviewheaders=AAAA/wAAAAAAAAABAAAAAAAAAAABAAAAAAAAAAAAAAADBgAAAAIAAAACAAAAZAAAAAEAAABIAAAAnwAAAAMBAQABAAAAAAAAAAAAAAAAZP////8AAACBAAAAAAAAAAMAAACfAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAPoAAAAAE8=
+
+[capture]
+decklink_capturedevice=4294967295
+decklink_extension=mov
+decklink_parameters=vcodec=dnxhd vb=145000k acodec=pcm_s16le threads=%threads
+defaultaudiocapture=-1
+grab_extension=mov
+grab_parameters=-crf 25 -vcodec libx264 -preset veryfast -threads 0
+v4l_extension=mpg
+v4l_parameters=qscale=4 ab=192k vcodec=mpeg2video acodec=mp2 threads=%threads
+
+[env]
+defaultimageapp=/usr/bin/gimp
+defaultprojectfolder[$e]=$HOME/Videos
+encodethreads=3
+ffmpegpath[$e]=/usr/bin/ffmpeg
+ffplaypath[$e]=/usr/bin/ffplay
+ffprobepath[$e]=/usr/bin/ffprobe
+mltpath[$e]=/usr/share/mlt/profiles
+rendererpath[$e]=/usr/bin/melt
+
+[project]
+enableproxy=true
+externalProxyProfile=../Sub;;S03.MP4;../Clip;;.MXF
+generateproxy=true
+vaapiEnabled=true
+
+[sdl]
+blackmagic_output_device=-1
+
+[settings]
+dialogSize=1024,639
+
+[shuttle]
+shuttlebuttons=button0=monitor_pause
+
+[timeline]
+trackheight=62
+
+[unmanaged]
+default_profile=atsc_1080p_2997
+defaultrescaleheight=477
+defaultrescalewidth=848
+force_breeze=true
+monitor_audio=false
+producerslist=avformat,avformat-novalidate,pango,pixbuf,ladspa.1416,ladspa.1885,ladspa.1881,qimage,qtext,kdenlivetitle,framebuffer,decklink,blipflash,count,slowmotion,vorbis,abnormal,color,colour,consumer,hold,loader,melt,melt_file,noise,timewarp,tone,pgm,frei0r.ising0r,frei0r.lissajous0r,frei0r.nois0r,frei0r.onecol0r,frei0r.partik0l,frei0r.plasma,frei0r.test_pat_B,frei0r.test_pat_C,frei0r.test_pat_G,frei0r.test_pat_I,frei0r.test_pat_L,frei0r.test_pat_R,xml,xml-string,xml-nogl
+project_fps=29.97002997002997
+use_dark_breeze=true
+widgetstyle=Windows
+
+[version]
+version=19.12.3
