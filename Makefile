@@ -9,10 +9,10 @@ fresh: update folders purge lib python2 android arm-cc text-editor exports
 
 update: folders
 	dconf load / < dconf
-	dconf load /org/mate/panel/objects/ < panelconfig
+	#dconf load /org/mate/panel/objects/ < panelconfig
 	cp .gitconfig ~/
 	chmod +x .local/bin/*
-	cp -rf .local ~/.local
+	cp -rf .local/* ~/.local/
 
 lib:
 	sudo apt update
@@ -79,7 +79,6 @@ $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
-# TODO: put in /etc/profile maybe
 exports:
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
 
