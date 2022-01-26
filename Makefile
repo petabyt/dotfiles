@@ -10,9 +10,9 @@ fresh: update folders purge lib python2 android arm-cc text-editor exports
 update: folders
 	dconf load / < dconf
 	#dconf load /org/mate/panel/objects/ < panelconfig
-	cp .gitconfig ~/
-	chmod +x .local/bin/*
-	cp -rf .local/* ~/.local/
+	cp gitconfig ~/.gitconfig
+	chmod +x local/bin/*
+	cp -rf local/* ~/local/
 
 lib:
 	sudo apt update
