@@ -1,9 +1,9 @@
 # Yes, a Makefile to compile my computer
 
-$(HOME)=$(shell echo ~)
+HOME=$(shell echo ~)
 
 help:
-	echo "update lib purge python2 android dconf text-editor exports thinkpad folders arm-cc"
+	@echo "update lib purge python2 android dconf text-editor exports thinkpad folders arm-cc"
 
 fresh: update folders purge lib python2 android arm-cc text-editor exports
 
@@ -12,11 +12,12 @@ update: folders
 	#dconf load /org/mate/panel/objects/ < panelconfig
 	cp gitconfig ~/.gitconfig
 	chmod +x local/bin/*
-	cp -rf local/* ~/local/
+	cp -rf local/* ~/.local/
 
 lib:
 	sudo apt update
-	sudo apt install golang wget curl dillo links build-essential git xclip caja-open-terminal
+	sudo apt install golang wget curl dillo links \
+	    build-essential git xclip caja-open-terminal \
 
 purge:
 	sudo apt update
@@ -66,13 +67,14 @@ $(MICRO_SYNTAX):
 	mkdir -p $(MICRO_SYNTAX)
 
 $(MICRO_SYNTAX)/arm.yaml: $(MICRO_SYNTAX)
-	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/micro.yaml; mv micro.yaml arm.yaml
+	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/micro.yaml
+	cd $(MICRO_SYNTAX); mv micro.yaml arm.yaml
 
 $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/skript.yaml
 
 /bin/micro:
-	cd curl https://getmic.ro | bash
+	curl https://getmic.ro | bash
 	sudo mv micro /bin/micro
 	micro -plugin install filemanager
 
@@ -82,9 +84,11 @@ text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 exports:
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
 
-# thinkpad tweak
+# x240 thinkpad tweak
 # See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11
 thinkpad:
 	# Fix janky Firefox scrolling
 	echo "export MOZ_USE_XINPUT2=1" >> /etc/profile
+
+	# Nifty fingerprint reading
 	sudo apt install fprintd
