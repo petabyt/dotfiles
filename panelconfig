@@ -43,7 +43,7 @@ toplevel-id='top'
 
 [objects/object-10]
 locked=true
-launcher-location='firefox.desktop'
+launcher-location='/usr/share/applications/firefox-esr.desktop'
 object-type='launcher'
 panel-right-stick=false
 position=234
@@ -139,7 +139,7 @@ position=318
 toplevel-id='top'
 
 [objects/object-9]
-launcher-location='caja-browser.desktop'
+launcher-location='/usr/share/applications/caja-browser.desktop'
 object-type='launcher'
 panel-right-stick=false
 position=975
