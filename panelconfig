@@ -1,11 +1,18 @@
 [general]
 default-layout='familiar'
-object-id-list=['notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'workspace-switcher', 'trashapplet', 'object-0', 'object-2', 'object-3', 'object-4', 'object-5', 'object-8', 'object-11', 'object-7', 'object-9', 'object-13', 'object-14', 'object-1', 'object-10', 'object-12', 'object-16']
+object-id-list=['notification-area', 'indicatorappletcomplete', 'show-desktop', 'window-list', 'workspace-switcher', 'trashapplet', 'object-0', 'object-2', 'object-3', 'object-4', 'object-5', 'object-8', 'object-11', 'object-7', 'object-9', 'object-13', 'object-14', 'object-1', 'object-10', 'object-12', 'object-16', 'object-6']
 toplevel-id-list=['top', 'bottom']
+
+[org/mate/desktop/interface]
+enable-animations=false
+gtk-decoration-layout='menu:minimize,maximize,close'
+gtk-theme='TraditionalOk'
+icon-theme='Radiant-MATE'
+window-scaling-factor=0
 
 [objects/indicatorappletcomplete]
 applet-iid='IndicatorAppletCompleteFactory::IndicatorAppletComplete'
-locked=false
+locked=true
 object-type='applet'
 panel-right-stick=true
 position=0
@@ -20,19 +27,22 @@ position=10
 toplevel-id='top'
 
 [objects/object-0]
+locked=true
 object-type='menu-bar'
 panel-right-stick=false
 position=0
 toplevel-id='top'
 
 [objects/object-1]
+locked=true
 launcher-location='/usr/share/applications/org.kde.kdenlive.desktop'
 object-type='launcher'
 panel-right-stick=false
-position=402
+position=346
 toplevel-id='top'
 
 [objects/object-10]
+locked=true
 launcher-location='firefox.desktop'
 object-type='launcher'
 panel-right-stick=false
@@ -84,6 +94,7 @@ position=374
 toplevel-id='top'
 
 [objects/object-2]
+locked=true
 launcher-location='/usr/share/applications/mate-terminal.desktop'
 object-type='launcher'
 panel-right-stick=false
@@ -91,6 +102,7 @@ position=262
 toplevel-id='top'
 
 [objects/object-3]
+locked=true
 launcher-location='/usr/share/applications/google-chrome.desktop'
 object-type='launcher'
 panel-right-stick=false
@@ -119,6 +131,7 @@ position=346
 toplevel-id='top'
 
 [objects/object-8]
+locked=true
 launcher-location='/usr/share/applications/virtualbox.desktop'
 object-type='launcher'
 panel-right-stick=false
@@ -130,6 +143,13 @@ launcher-location='caja-browser.desktop'
 object-type='launcher'
 panel-right-stick=false
 position=975
+toplevel-id='top'
+
+[org/mate/panel/objects/object-6]
+applet-iid='SensorsAppletFactory::SensorsApplet'
+object-type='applet'
+panel-right-stick=false
+position=497
 toplevel-id='top'
 
 [objects/show-desktop]
