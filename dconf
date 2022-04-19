@@ -1,3 +1,10 @@
+[com/canonical/indicator/datetime]
+timezone-name='America/New_York New York'
+
+[com/canonical/indicator/power]
+show-percentage=true
+show-time=false
+
 [org/mate/terminal/keybindings]
 next-tab='<Primary>Right'
 prev-tab='<Primary>Left'
