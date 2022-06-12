@@ -3,21 +3,25 @@
 HOME=$(shell echo ~)
 
 help:
-	@echo "update lib purge python2 android dconf text-editor exports thinkpad folders arm-cc"
+	@echo "update panel lib purge python2 android dconf texteditor exports thinkpad folders armcc"
 
-fresh: update folders purge lib python2 android arm-cc text-editor exports
+fresh: update folders purge lib python2 android armcc texteditor exports
 
 update: folders
 	dconf load / < dconf
-	dconf load /org/mate/panel/ < panelconfig
 	cp gitconfig ~/.gitconfig
 	chmod +x local/bin/*
 	cp -rf local/* ~/.local/
 
+# Tricky stuff
+panel:
+	dconf load /org/mate/panel/ < panelconfig
+
 lib:
 	sudo apt update
 	sudo apt install golang wget curl dillo links \
-	    build-essential git xclip caja-open-terminal
+	    build-essential git xclip caja-open-terminal \
+	    cmake
 	sudo dpkg --add-architecture i386
 
 purge:
@@ -44,7 +48,7 @@ android:
 	sudo cp -a android-sdk-licenses/*-license /usr/lib/android-sdk/licenses 
 	rm -rf android-sdk-licenses
 
-arm-cc: $(HOME)/gcc-arm-none-eabi
+armcc: $(HOME)/gcc-arm-none-eabi
 
 # Decent arm compiler
 $(HOME)/gcc-arm-none-eabi:
@@ -79,12 +83,14 @@ $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 	curl https://getmic.ro | bash
 	sudo mv micro /bin/micro
 	micro -plugin install filemanager
+	git config --global core.editor "micro"
 
-text-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
+texteditor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
 exports:
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
+	echo 'export PATH=$PATH:~/.local/bin' >> ~/.bashrc
 
 # x240 thinkpad tweak
 # See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11
