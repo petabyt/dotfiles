@@ -1,0 +1,75 @@
+{
+  "bindings":[
+    {
+      "action":"accelerate",
+      "control":"w"
+    },
+    {
+      "action":"brake",
+      "control":"s"
+    },
+    {
+      "action":"steer_left",
+      "control":"a"
+    },
+    {
+      "action":"steer_right",
+      "control":"d"
+    },
+    {
+      "action":"moveforward",
+      "control":"alt w"
+    },
+    {
+      "action":"movebackward",
+      "control":"alt s"
+    },
+    {
+      "action":"moveleft",
+      "control":"alt a"
+    },
+    {
+      "action":"moveright",
+      "control":"alt d"
+    }
+  ],
+  "devicetype":"keyboard",
+  "guid":"{6F1D2B61-D5A0-11CF-BFC7-444553540000}",
+  "name":"Keyboard",
+  "removed":[
+    {
+      "action":"movebackward",
+      "control":"s"
+    },
+    {
+      "action":"brake",
+      "control":"down"
+    },
+    {
+      "action":"steer_left",
+      "control":"left"
+    },
+    {
+      "action":"steer_right",
+      "control":"right"
+    },
+    {
+      "action":"accelerate",
+      "control":"up"
+    },
+    {
+      "action":"moveleft",
+      "control":"a"
+    },
+    {
+      "action":"moveright",
+      "control":"d"
+    },
+    {
+      "action":"moveforward",
+      "control":"w"
+    }
+  ],
+  "version":1,
+  "vidpid":"6F1D2B61"
+}
