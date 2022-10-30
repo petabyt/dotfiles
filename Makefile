@@ -21,7 +21,7 @@ lib:
 	sudo apt update
 	sudo apt install golang wget curl dillo links \
 	    build-essential git xclip caja-open-terminal \
-	    cmake
+	    cmake python3-pip
 	sudo dpkg --add-architecture i386
 
 purge:
