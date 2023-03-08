@@ -21,7 +21,10 @@ lib:
 	sudo apt update
 	sudo apt install golang wget curl dillo links \
 	    build-essential git xclip caja-open-terminal \
-	    cmake python3-pip
+	    cmake python3-pip gimp mate-themes libusb-dev nodejs \
+	    libx11-dev libgtk-3-dev tcc dconf-editor bless valgrind \
+	    libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev \
+	    
 	sudo dpkg --add-architecture i386
 
 purge:
@@ -30,8 +33,8 @@ purge:
 
 # attempt to install python2 pip2 to compile legacy stuff
 python2:
-	sudo apt install python2.7-minimal
-	sudo apt install python-is-python2
+	sudo apt install python2
+	#sudo apt install python-is-python2
 	wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
 	sudo python2.7 get-pip.py
 	rm get-pip.py
@@ -100,3 +103,11 @@ thinkpad:
 
 	# Nifty fingerprint reading
 	sudo apt install fprintd
+
+brave:
+	sudo apt install curl
+	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+	echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+	sudo apt update
+	sudo apt install brave-browser
+	
