@@ -1,0 +1,176 @@
+[Toplevel top]
+enable-buttons=false
+size=28
+screen=0
+monitor=0
+expand=true
+orientation=top
+
+[Toplevel bottom]
+enable-buttons=false
+size=28
+screen=0
+monitor=0
+expand=true
+orientation=bottom
+
+[Object notification-area]
+locked=true
+toplevel-id=top
+position=10
+object-type=applet
+applet-iid=NotificationAreaAppletFactory::NotificationArea
+panel-right-stick=true
+
+[Object indicatorappletcomplete]
+locked=true
+toplevel-id=top
+position=0
+object-type=applet
+applet-iid=IndicatorAppletCompleteFactory::IndicatorAppletComplete
+panel-right-stick=true
+
+[Object show-desktop]
+locked=true
+toplevel-id=bottom
+position=0
+object-type=applet
+applet-iid=WnckletFactory::ShowDesktopApplet
+panel-right-stick=false
+
+[Object window-list]
+locked=true
+toplevel-id=bottom
+position=20
+object-type=applet
+applet-iid=WnckletFactory::WindowListApplet
+panel-right-stick=false
+
+[Object workspace-switcher]
+locked=true
+toplevel-id=bottom
+position=10
+object-type=applet
+applet-iid=WnckletFactory::WorkspaceSwitcherApplet
+panel-right-stick=true
+
+[Object trashapplet]
+locked=true
+toplevel-id=bottom
+position=0
+object-type=applet
+applet-iid=TrashAppletFactory::TrashApplet
+panel-right-stick=true
+
+[Object object-0]
+launcher-location=/usr/share/applications/brave-browser.desktop
+locked=false
+toplevel-id=top
+position=240
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-1]
+locked=false
+toplevel-id=top
+position=0
+object-type=menu-bar
+applet-iid=
+panel-right-stick=false
+
+[Object object-3]
+launcher-location=/usr/share/applications/google-chrome.desktop
+locked=false
+toplevel-id=top
+position=-1
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-5]
+launcher-location=studio.sh.desktop
+locked=false
+toplevel-id=top
+position=331
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-6]
+locked=true
+toplevel-id=top
+position=872
+object-type=applet
+applet-iid=MateWeatherAppletFactory::MateWeatherApplet
+panel-right-stick=false
+
+[Object object-7]
+launcher-location=/usr/share/applications/caja-browser.desktop
+locked=false
+toplevel-id=top
+position=1469
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-8]
+launcher-location=ghidraRun.desktop
+locked=false
+toplevel-id=top
+position=359
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-9]
+launcher-location=/usr/share/applications/pluma.desktop
+locked=false
+toplevel-id=top
+position=1497
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-11]
+launcher-location=mate-terminal.desktop
+locked=false
+toplevel-id=top
+position=303
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-2]
+locked=true
+toplevel-id=top
+position=717
+object-type=applet
+applet-iid=SensorsAppletFactory::SensorsApplet
+panel-right-stick=false
+
+[Object object-4]
+launcher-location=mate-screenshot.desktop
+locked=false
+toplevel-id=top
+position=1525
+object-type=launcher
+menu-path=applications:/
+panel-right-stick=false
+
+[Object object-10]
+locked=false
+toplevel-id=top
+position=991
+object-type=applet
+applet-iid=MultiLoadAppletFactory::MultiLoadApplet
+panel-right-stick=false
+
+[Customsetting maximusdecoration]
+mate-maximus-recorded=False
+
+[Customsetting windowcontrollayout]
+mate-general=menu:minimize,maximize,close
+mate-interface=menu:minimize,maximize,close
+gnome-wm-preferences=:minimize,maximize,close
+

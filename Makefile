@@ -3,9 +3,9 @@
 HOME=$(shell echo ~)
 
 help:
-	@echo "update panel lib purge python2 android dconf texteditor exports thinkpad folders armcc"
+	@echo "update panel lib purge python2 android dconf editor exports thinkpad folders armcc"
 
-fresh: update folders purge lib python2 android armcc texteditor exports
+fresh: update folders purge lib python2 android armcc editor exports
 
 update: folders
 	dconf load / < dconf
@@ -29,7 +29,7 @@ lib:
 
 purge:
 	sudo apt update
-	-sudo apt remove ubuntu-mate-welcome
+	-sudo apt remove ubuntu-mate-welcome ubuntu-mate-guide
 
 # attempt to install python2 pip2 to compile legacy stuff
 python2:
@@ -65,10 +65,6 @@ folders: $(HOME)/Pulled $(HOME)/Gtcc $(HOME)/School
 # Spiffy folders
 $(HOME)/Pulled:
 	mkdir ~/Pulled
-$(HOME)/Gtcc:
-	mkdir ~/Gtcc
-$(HOME)/School:
-	mkdir ~/School
 
 # Nice text editor
 MICRO_SYNTAX=$(HOME)/.config/micro/syntax
@@ -88,7 +84,7 @@ $(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
 	micro -plugin install filemanager
 	git config --global core.editor "micro"
 
-texteditor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
+editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
 exports:
