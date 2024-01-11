@@ -3,19 +3,14 @@
 HOME=$(shell echo ~)
 
 help:
-	@echo "update panel lib purge python2 android dconf editor exports thinkpad folders armcc"
+	@echo "update lib purge python2 android editor exports thinkpad folders armcc"
 
 fresh: update folders purge lib python2 android armcc editor exports
 
 update: folders
-	dconf load / < dconf
 	cp gitconfig ~/.gitconfig
 	chmod +x local/bin/*
 	cp -rf local/* ~/.local/
-
-# Tricky stuff
-panel:
-	dconf load /org/mate/panel/ < panelconfig
 
 lib:
 	sudo apt update
@@ -24,7 +19,6 @@ lib:
 	    cmake python3-pip gimp mate-themes libusb-dev nodejs \
 	    libx11-dev libgtk-3-dev tcc dconf-editor bless valgrind \
 	    libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev \
-	    
 	sudo dpkg --add-architecture i386
 
 purge:
@@ -60,31 +54,18 @@ $(HOME)/gcc-arm-none-eabi:
 	chmod +x ~/gcc-arm-none-eabi/bin/*
 	echo 'export PATH=$PATH:~/gcc-arm-none-eabi/bin' >> ~/.bashrc
 
-folders: $(HOME)/Pulled $(HOME)/Gtcc $(HOME)/School
+folders: $(HOME)/Pulled
 
 # Spiffy folders
 $(HOME)/Pulled:
 	mkdir ~/Pulled
 
 # Nice text editor
-MICRO_SYNTAX=$(HOME)/.config/micro/syntax
-$(MICRO_SYNTAX):
-	mkdir -p $(MICRO_SYNTAX)
-
-$(MICRO_SYNTAX)/arm.yaml: $(MICRO_SYNTAX)
-	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/5dbfa413ff1b14e8c2b1af7c55249de6/raw/micro.yaml
-	cd $(MICRO_SYNTAX); mv micro.yaml arm.yaml
-
-$(MICRO_SYNTAX)/skript.yaml: $(MICRO_SYNTAX)
-	cd $(MICRO_SYNTAX); wget -4 https://gist.githubusercontent.com/petabyt/aef8a1c969d95ca629f0221bbedc1e9a/raw/skript.yaml
-
-/bin/micro:
+editor:
 	curl https://getmic.ro | bash
 	sudo mv micro /bin/micro
 	micro -plugin install filemanager
 	git config --global core.editor "micro"
-
-editor: /bin/micro $(MICRO_SYNTAX)/arm.yaml $(MICRO_SYNTAX)/skript.yaml
 
 # variables
 exports:
@@ -99,11 +80,3 @@ thinkpad:
 
 	# Nifty fingerprint reading
 	sudo apt install fprintd
-
-brave:
-	sudo apt install curl
-	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-	echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-	sudo apt update
-	sudo apt install brave-browser
-	

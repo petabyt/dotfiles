@@ -1,0 +1,25 @@
+# Skript micro yaml
+
+filetype: sk
+
+detect:
+    filename: "\\.sk$"
+
+rules:
+    # clashes with execute command...
+    - identifier: ":"
+    - statement: "\\b(while|function|if|else|loop|)\\b"
+    - statement: "\\b(set|send|stop|return|make|cancel)\\b"
+    - statement: "\\b(message|broadcast|play)\\b"
+
+    - constant.number: "\\b[0-9]+\\b"
+
+    - type.extended: "arg-[0-9]"
+    - symbol.brackets: "[(){}]|\\[|\\]"
+
+    - constant.string: "%(.)*%"
+    - constant.string: "\"(.|[^\"])*\""
+
+    # Work with skib
+    - comment: "# .*"
+    - preproc: "^[[:space:]]*#[[:space:]]*(define|include|ifdef|endif)"
