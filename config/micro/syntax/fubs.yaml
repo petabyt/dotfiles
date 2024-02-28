@@ -4,16 +4,17 @@ detect:
     filename: "\\.fut$"
 
 rules:
-    - statement: "\\$[0-9a-z_]+"
+    - constant.number: "\\b[0-9][0-9a-fA-F]*\\b"
 
-    - identifier: "\\@[0-9a-zA-Z_]+"
+    - constant.number: "\\$B[0-9a-fA-F]*"
 
     - symbol.operator: "[-+*/=<>.:;,~&|^!?]"
     - symbol.brackets: "[(){}]|\\[|\\]"
 
-    - type: "\\b(bool|i1|i4|i8|pointer|f4|array|blob|void|any|)\\b"
+    - type: "\\b(bool|i1|i2|i4|i8|pointer|f4|array|blob|void|any)\\b"
+    - type: "\\#[A-Za-z/0-9]+"
 
-    - constant.number: "\\b[0-9a-fA-F]+\\b"
+    - statement: "\\$[a-z_0-9^]+"
 
     - symbol.brackets: "[(){}]|\\[|\\]"
 
@@ -32,8 +33,15 @@ rules:
             - error: "..+"
             - constant.specialChar: "\\\\([\"'abfnrtv\\\\]|[0-3]?[0-7]{1,2}|x[0-9A-Fa-f]{1,2}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
 
+    - constant.string:
+        start: "`"
+        end: "`"
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\([\"'abfnrtv\\\\]|[0-3]?[0-7]{1,2}|x[0-9A-Fa-f]{1,2}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+
     - comment:
         start: "//"
         end: "$"
         rules:
-            - todo: "(TODO|XXX|FIXME):?"
+            - todo: "(TODO|wtf):?"
