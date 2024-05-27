@@ -1,0 +1,28 @@
+ninja-build meson
+golang wget curl dillo links
+build-essential git xclip
+cmake python3-pip gimp libusb-dev nodejs
+libx11-dev
+libexif-dev
+libgtk-3-dev
+libusb-1.0-0-dev
+tcc bless valgrind
+libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev
+doxygen
+kpartx
+unzip
+binwalk
+automake autoconf
+xxd
+cloc
+sshpass
+liblua5.3-dev
+clangd
+mingw-w64-common
+mingw-w64-x86-64-dev
+g++-mingw-w64-x86-64-win32
+
+mate-themes
+dconf-editor
+caja pluma
+caja-open-terminal

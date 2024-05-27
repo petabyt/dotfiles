@@ -14,11 +14,7 @@ update: folders
 
 lib:
 	sudo apt update
-	sudo apt install golang wget curl dillo links \
-	    build-essential git xclip caja-open-terminal \
-	    cmake python3-pip gimp mate-themes libusb-dev nodejs \
-	    libx11-dev libgtk-3-dev tcc dconf-editor bless valgrind \
-	    libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev \
+	sudo apt install `cat packages`
 	sudo dpkg --add-architecture i386
 
 purge:
@@ -33,8 +29,7 @@ python2:
 	sudo python2.7 get-pip.py
 	rm get-pip.py
 
-# androidtools dev stuff
-android:
+androidtools:
 	sudo apt install android-sdk android-sdk-platform-23 
 	sudo apt install google-android-ndk-installer
 	sudo apt install cmake
