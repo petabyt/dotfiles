@@ -14,7 +14,7 @@ rules:
     - statement: "\\$\\((flavor|foreach|if|info|join|lastword|notdir|or)[[:space:]]"
     - statement: "\\$\\((origin|patsubst|realpath|shell|sort|strip|suffix)[[:space:]]"
     - statement: "\\$\\((value|warning|wildcard|word|wordlist|words)[[:space:]]"
-    - identifier: "^[%A-Za-z0-9_./-]+"
+    - identifier: "^[ ]*[%A-Za-z0-9_./-]+"
     - constant.string:
         start: "\""
         end: "\""
