@@ -1,6 +1,4 @@
-# Yes, a Makefile to compile my computer
-
-HOME=$(shell echo ~)
+HOME := $(shell echo ~)
 
 help:
 	@echo "update lib purge python2 android editor exports thinkpad folders armcc"
@@ -11,10 +9,15 @@ update: folders
 	cp gitconfig ~/.gitconfig
 	chmod +x local/bin/*
 	cp -rf local/* ~/.local/
+	cp -rf config/* ~/.config/
+
+update-kde: update
+	cp -rf kde/local/bin/* ~/.local/bin/
+	cp bashrc ~/.bashrc
 
 lib:
 	sudo apt update
-	sudo apt install `cat packages`
+	sudo apt install -m `cat packages`
 	sudo dpkg --add-architecture i386
 
 purge:
@@ -24,7 +27,7 @@ purge:
 # attempt to install python2 pip2 to compile legacy stuff
 python2:
 	sudo apt install python2
-	#sudo apt install python-is-python2
+	sudo apt install python-is-python2
 	wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
 	sudo python2.7 get-pip.py
 	rm get-pip.py

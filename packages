@@ -6,7 +6,7 @@ libx11-dev
 libexif-dev
 libgtk-3-dev
 libusb-1.0-0-dev
-tcc bless valgrind
+tcc valgrind
 libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev
 doxygen
 kpartx
@@ -21,8 +21,5 @@ clangd
 mingw-w64-common
 mingw-w64-x86-64-dev
 g++-mingw-w64-x86-64-win32
-
-mate-themes
+gcc-aarch64-linux-gnu
 dconf-editor
-caja pluma
-caja-open-terminal
