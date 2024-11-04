@@ -65,6 +65,9 @@ editor:
 	micro -plugin install filemanager
 	git config --global core.editor "micro"
 
+git:
+	git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+
 # variables
 exports:
 	echo 'export PATH=$PATH:~/' >> ~/.bashrc
