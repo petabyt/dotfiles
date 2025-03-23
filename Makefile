@@ -24,6 +24,9 @@ help:
 
 all: update lib-apt lib-dnf folders
 
+flatpak:
+	flatpak install `cat pkg/flatpak`
+
 folders: $(HOME)/Pulled
 
 $(HOME)/Pulled:
@@ -80,11 +83,6 @@ editor:
 
 git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/
-
-# variables
-exports:
-	echo 'export PATH=$PATH:~/' >> ~/.bashrc
-	echo 'export PATH=$PATH:~/.local/bin' >> ~/.bashrc
 
 # x240 thinkpad tweak
 # See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11

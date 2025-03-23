@@ -1,2 +1,9 @@
 mingw64-gcc-c++
 mingw64-gcc
+
+libxml2-devel
+libusb1-devel
+vulkan-devel
+glfw-devel
+
+gamescope
