@@ -35,7 +35,11 @@ RUN apt-get update && \
         python3-minimal && \
     apt-get clean
 
+# Download appimages and remove magic bytes that break interpreter
 RUN wget https://github.com/linuxdeploy/linuxdeploy/releases/download/2.0.0-alpha-1-20241106/linuxdeploy-aarch64.AppImage -O /usr/bin/linuxdeploy && chmod +x /usr/bin/linuxdeploy
 RUN wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-aarch64.AppImage -O /usr/bin/appimagetool && chmod +x /usr/bin/appimagetool
 
-RUN git clone https://github.com/petabyt/libui-dev.git && cd libui-dev && make ARCH=aarch64-linux-gnu TARGET=l install
+RUN dd if=/dev/zero bs=1 count=4 seek=8 of=/usr/bin/linuxdeploy conv=notrunc
+RUN dd if=/dev/zero bs=1 count=4 seek=8 of=/usr/bin/appimagetool conv=notrunc
+
+RUN git clone https://github.com/petabyt/libui-dev.git && cd libui-dev && make ARCH=aarch64-linux-gnu -j`nproc` TARGET=l install

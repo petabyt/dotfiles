@@ -1,0 +1,21 @@
+make
+ninja-build meson
+golang wget curl dillo links git xclip
+cmake python3-pip gimp nodejs
+valgrind
+doxygen
+kpartx
+unzip
+binwalk
+automake autoconf
+xxd
+cloc
+sshpass
+clangd
+gcc-aarch64-linux-gnu
+dconf-editor
+bear
+flatpak
+obs-studio
+vlc
+wireshark

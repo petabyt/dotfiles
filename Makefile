@@ -1,28 +1,47 @@
 HOME := $(shell echo ~)
 
+ifeq ($(shell lsb_release -is), Fedora)
+UPDATE := sudo dnf update
+REMOVE := -sudo dnf remove
+INSTALL := sudo dnf install
+lib:
+	sudo dnf update
+	sudo dnf install `cat pkg/all pkg/dnf`
+else ifeq ($(shell lsb_release -is), Ubuntu)
+UPDATE := sudo apt update
+REMOVE := -sudo apt remove
+INSTALL := sudo apt install -m
+lib:
+	sudo apt update
+	sudo dpkg --add-architecture i386
+	sudo apt install `cat pkg/all pkg/apt`
+else
+$(error unknown distro)
+endif
+
 help:
 	@echo "update lib purge python2 android editor exports thinkpad folders armcc"
 
-fresh: update folders purge lib python2 android armcc editor exports
+all: update lib-apt lib-dnf folders
+
+folders: $(HOME)/Pulled
+
+$(HOME)/Pulled:
+	mkdir ~/Pulled
 
 update: folders
 	cp gitconfig ~/.gitconfig
 	chmod +x local/bin/*
 	cp -rf local/* ~/.local/
 	cp -rf config/* ~/.config/
-
-update-kde: update
-	cp -rf kde/local/bin/* ~/.local/bin/
 	cp bashrc ~/.bashrc
 
-lib:
-	sudo apt update
-	sudo apt install -m `cat packages`
-	sudo dpkg --add-architecture i386
+update-plasma: update
+	cp -rf kde/local/bin/* ~/.local/bin/
 
 purge:
-	sudo apt update
-	-sudo apt remove ubuntu-mate-welcome ubuntu-mate-guide
+	$(UPDATE)
+	$(REMOVE) ubuntu-mate-welcome ubuntu-mate-guide
 
 # attempt to install python2 pip2 to compile legacy stuff
 python2:
@@ -45,18 +64,12 @@ androidtools:
 
 armcc: $(HOME)/gcc-arm-none-eabi
 
-# Decent arm compiler
+# 2016 arm compiler
 $(HOME)/gcc-arm-none-eabi:
 	cd ~/Downloads; wget "https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2?revision=111dee36-f88b-4672-8ac6-48cf41b4d375?product=GNU%20Arm%20Embedded%20Toolchain%20Downloads,32-bit,,Linux,5-2016-q3-update"
 	cd ~/Downloads; tar -xjf gcc*; mv gcc-arm-none-eabi-5_4-2016q3 ~/gcc-arm-none-eabi
 	chmod +x ~/gcc-arm-none-eabi/bin/*
 	echo 'export PATH=$PATH:~/gcc-arm-none-eabi/bin' >> ~/.bashrc
-
-folders: $(HOME)/Pulled
-
-# Spiffy folders
-$(HOME)/Pulled:
-	mkdir ~/Pulled
 
 # Nice text editor
 editor:

@@ -3,3 +3,7 @@
 	email = brikbusters@gmail.com
 [init]
 	defaultBranch = master
+[core]
+	editor = micro
+[safe]
+	directory = /host

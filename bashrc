@@ -117,3 +117,11 @@ if ! shopt -oq posix; then
 fi
 
 export PATH=$PATH:~/.local/bin
+
+if ! command -v bless &> /dev/null; then
+    alias bless="flatpak run --branch=stable --arch=x86_64 --command=bless --file-forwarding com.github.afrantzis.Bless"
+fi
+
+if [ "$XDG_CURRENT_DESKTOP" == "KDE" ]; then
+    alias caja="dolphin"
+fi
