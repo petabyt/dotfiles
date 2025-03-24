@@ -1,12 +1,13 @@
 HOME := $(shell echo ~)
 
+# NOTE: grep -v '^#' removes comments
 ifeq ($(shell lsb_release -is), Fedora)
 UPDATE := sudo dnf update
 REMOVE := -sudo dnf remove
 INSTALL := sudo dnf install
 lib:
 	sudo dnf update
-	sudo dnf install `cat pkg/all pkg/dnf`
+	sudo dnf install `cat pkg/all pkg/dnf | grep -v '^#'`
 else ifeq ($(shell lsb_release -is), Ubuntu)
 UPDATE := sudo apt update
 REMOVE := -sudo apt remove
@@ -14,18 +15,15 @@ INSTALL := sudo apt install -m
 lib:
 	sudo apt update
 	sudo dpkg --add-architecture i386
-	sudo apt install `cat pkg/all pkg/apt`
+	sudo apt install `cat pkg/all pkg/apt | grep -v '^#'`
 else
 $(error unknown distro)
 endif
 
-help:
-	@echo "update lib purge python2 android editor exports thinkpad folders armcc"
-
 all: update lib-apt lib-dnf folders
 
 flatpak:
-	flatpak install `cat pkg/flatpak`
+	flatpak install `cat pkg/flatpak | grep -v '^#'`
 
 folders: $(HOME)/Pulled
 

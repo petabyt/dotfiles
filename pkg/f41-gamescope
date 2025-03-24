@@ -1,0 +1,4 @@
+SDL2-devel cmake gcc gcc-c++ git glm-devel glslang google-benchmark-devel hwdata-devel libX11-devel libXcomposite-devel libXcursor-devel libXdamage-devel libXext-devel libXfixes-devel libXmu-devel libXrender-devel libXres-devel libXtst-devel libXxf86vm-devel libcap-devel libdisplay-info-devel libdrm-devel libliftoff-devel libxkbcommon-devel meson ninja-build pipewire-devel stb_image-devel stb_image_resize-devel stb_image_write-devel vkroots-devel vulkan-loader-devel wayland-devel wayland-protocols-devel wlroots-devel xorg-x11-server-Xwayland-devel libavif-devel libseat-devel
+libdecor-devel
+luajit-devel
+libxkbcommon-x11-devel

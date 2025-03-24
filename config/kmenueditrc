@@ -1,0 +1,11 @@
+[General]
+SplitterSizes=461,633
+
+[MainWindow]
+2560x1440 screen: Height=417
+2560x1440 screen: Width=1105
+2560x1440 screen: XPosition=436
+2560x1440 screen: YPosition=599
+DisplayPort-0=DisplayPort-0
+State=AAAA/wAAAAD9AAAAAAAABFEAAAFVAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled

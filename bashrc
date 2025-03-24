@@ -125,3 +125,5 @@ fi
 if [ "$XDG_CURRENT_DESKTOP" == "KDE" ]; then
     alias caja="dolphin"
 fi
+
+alias open="xdg-open"

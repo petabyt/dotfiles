@@ -1,0 +1,45 @@
+2560x1440 screen: Window-Maximized=true
+State=AAAA/wAAAAD9AAAAAQAAAAAAAAAAAAAAAPwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAA/////wAAAW4BAAAF+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAAD/////AAABDAEAAAUAAAoAAAAFIQAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIAAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAAAAAAD/////AAAAAAAAAAA=
+
+[Desktop Entry]
+DefaultProfile=daniel.profile
+
+[General]
+ConfigVersion=1
+
+[KFileDialog Settings]
+detailViewIconSize=16
+
+[MainWindow]
+1280x720 screen: Height=620
+1280x720 screen: Width=1279
+1280x720 screen: XPosition=1
+1280x720 screen: YPosition=63
+1920x1080 screen: Height=704
+1920x1080 screen: Width=1253
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=334
+1920x1080 screen: YPosition=197
+2 screens: Window-Maximized=true
+2560x1440 screen: Height=1340
+2560x1440 screen: Width=2560
+2560x1440 screen: Window-Maximized=true
+2560x1440 screen: XPosition=0
+2560x1440 screen: YPosition=61
+3840x2160 screen: Window-Maximized=true
+:0.0=:0.0
+DisplayPort-0=DisplayPort-0
+MenuBar=Enabled
+State[$d]
+ToolBarsMovable=Disabled
+
+[TabBar]
+CloseTabOnMiddleMouseButton=true
+ExpandTabWidth=true
+TabBarVisibility=AlwaysShowTabBar
+
+[ThumbnailsSettings]
+EnableThumbnails=false
+
+[UiSettings]
+ColorScheme=

@@ -1,0 +1,15 @@
+[HTML Settings]
+AutomaticDetectionLanguage=1
+
+[MainWindow]
+2560x1440 screen: XPosition=880
+2560x1440 screen: YPosition=432
+DisplayPort-0=DisplayPort-0
+State=AAAA/wAAAAD9AAAAAAAAAyAAAAH1AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+
+[MainWindowState]
+Splitter=220,579
+
+[Search]
+ScopeSelection=0

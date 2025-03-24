@@ -5,5 +5,9 @@ libxml2-devel
 libusb1-devel
 vulkan-devel
 glfw-devel
+libexif-devel
 
 gamescope
+
+arm-none-eabi-newlib
+arm-none-eabi-gcc-cs
