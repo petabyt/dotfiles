@@ -13,8 +13,8 @@ UPDATE := sudo apt update
 REMOVE := -sudo apt remove
 INSTALL := sudo apt install -m
 lib:
-	sudo apt update
 	sudo dpkg --add-architecture i386
+	sudo apt update
 	sudo apt install `cat pkg/all pkg/apt | grep -v '^#'`
 else
 $(error unknown distro)
@@ -23,6 +23,7 @@ endif
 all: update lib-apt lib-dnf folders
 
 flatpak:
+	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	flatpak install `cat pkg/flatpak | grep -v '^#'`
 
 folders: $(HOME)/Pulled
@@ -39,6 +40,9 @@ update: folders
 
 update-plasma: update
 	cp -rf kde/local/bin/* ~/.local/bin/
+
+update-mate:
+	dconf load / < mate/dconf/terminal
 
 purge:
 	$(UPDATE)
