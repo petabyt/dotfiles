@@ -42,7 +42,7 @@ update-plasma: update
 	cp -rf kde/local/bin/* ~/.local/bin/
 
 update-mate:
-	dconf load / < mate/dconf/terminal
+	dconf load /org/mate/terminal/ < mate/dconf/terminal
 
 purge:
 	$(UPDATE)
