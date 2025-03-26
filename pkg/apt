@@ -6,6 +6,7 @@ libusb-1.0-0-dev
 tcc
 libglu1-mesa libxi-dev libxmu-dev libglu1-mesa-dev
 liblua5.3-dev
+libglfw3-dev
 mingw-w64-common
 mingw-w64-x86-64-dev
 g++-mingw-w64-x86-64-win32

@@ -43,6 +43,7 @@ update-plasma: update
 
 update-mate:
 	dconf load /org/mate/terminal/ < mate/dconf/terminal
+	sudo apt install `cat pkg/mate | grep -v '^#'`
 
 purge:
 	$(UPDATE)
