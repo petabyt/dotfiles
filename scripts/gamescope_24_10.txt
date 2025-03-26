@@ -1,0 +1,19 @@
+== How-to
+
+Install the dependencies: +
+`sudo apt install libbenchmark1.8.3 libdisplay-info2 libevdev-dev libgav1-1 libgudev-1.0-dev libmtdev-dev libseat1 libstb0 libwacom-dev libxcb-ewmh2 libxcb-shape0-dev libxcb-xfixes0-dev libxmu-headers libyuv0 libx11-xcb-dev libxres-dev libxmu-dev libseat-dev libinput-dev libxcb-composite0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-res0-dev libcap-dev wayland-protocols libvulkan-dev libwayland-dev libx11-dev cmake pkg-config meson libxdamage-dev libxcomposite-dev libxcursor-dev libxxf86vm-dev libxtst-dev libxkbcommon-dev libdrm-dev libpixman-1-dev libdecor-0-dev glslang-tools libbenchmark-dev libsdl2-dev libglm-dev libeis-dev libavif-dev libluajit-5.1-dev liblcms2-dev libxcb-errors0 libxcb-errors-dev libpipewire-0.3-dev libxcb-dri3-dev libxcb-present-dev libxcb-util1 libxcb-util-dev libxcb-util0-dev libxcb-render-util0 libxcb-render-util0-dev libxcb-xinput-dev`
+
+Download the Gamescope repository and all its submodules: +
+`git clone https://github.com/ValveSoftware/gamescope.git --recursive`
+
+Enter the newly created 'gamescope' directory: +
+`cd gamescope`
+
+Generate the files necessary for the Ninja build system:  +
+`meson build/`
+
+Using Ninja to compile Gamescope: +
+`ninja -C build/`
+
+Installing Gamescope to the system: +
+`meson install -C build/ --skip-subprojects`

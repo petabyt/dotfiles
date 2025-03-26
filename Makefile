@@ -38,9 +38,6 @@ update: folders
 	cp -rf config/* ~/.config/
 	cp bashrc ~/.bashrc
 
-update-plasma: update
-	cp -rf kde/local/bin/* ~/.local/bin/
-
 update-mate:
 	dconf load /org/mate/terminal/ < mate/dconf/terminal
 	sudo apt install `cat pkg/mate | grep -v '^#'`
