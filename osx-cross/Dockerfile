@@ -30,3 +30,12 @@ RUN <<EOR
     sudo make install
     cd .. && rm -rf cctools-port
 EOR
+
+RUN <<EOR
+	cd
+    git clone https://github.com/dmikushin/install_name_tool.git
+    cd install_name_tool
+    cmake -G Ninja -B build
+    cmake --build build
+    sudo cp build/install_name_tool /usr/local/bin/
+EOR
