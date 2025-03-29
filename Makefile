@@ -46,6 +46,10 @@ purge:
 	$(UPDATE)
 	$(REMOVE) ubuntu-mate-welcome ubuntu-mate-guide
 
+appimage:
+	sudo wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool && sudo chmod +x /usr/local/bin/appimagetool
+	sudo wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O /usr/local/bin/linuxdeploy && sudo chmod +x /usr/local/bin/linuxdeploy
+
 # attempt to install python2 pip2 to compile legacy stuff
 python2:
 	sudo apt install python2
