@@ -32,3 +32,5 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 # Had linker issues
 set(CMAKE_OBJC_COMPILER_WORKS 1)
+
+set(PKG_CONFIG_EXECUTABLE /usr/local/cctools/bin/pkg-config)
