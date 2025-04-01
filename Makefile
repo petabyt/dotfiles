@@ -1,5 +1,13 @@
 HOME := $(shell echo ~)
 
+is_apt =
+ifeq ($(shell lsb_release -is), Ubuntu)
+    is_apt = yes
+endif
+ifeq ($(shell lsb_release -is), Debian)
+    is_apt = yes
+endif
+
 # NOTE: grep -v '^#' removes comments
 ifeq ($(shell lsb_release -is), Fedora)
 UPDATE := sudo dnf update
@@ -8,7 +16,7 @@ INSTALL := sudo dnf install
 lib:
 	sudo dnf update
 	sudo dnf install `cat pkg/all pkg/dnf | grep -v '^#'`
-else ifeq ($(shell lsb_release -is), Ubuntu)
+else ifdef is_apt
 UPDATE := sudo apt update
 REMOVE := -sudo apt remove
 INSTALL := sudo apt install -m
@@ -40,7 +48,7 @@ update: folders
 
 update-mate:
 	dconf load /org/mate/terminal/ < mate/dconf/terminal
-	sudo apt install `cat pkg/mate | grep -v '^#'`
+	$(INSTALL) `cat pkg/mate | grep -v '^#'`
 
 purge:
 	$(UPDATE)
