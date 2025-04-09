@@ -28,7 +28,12 @@ else
 $(error unknown distro)
 endif
 
-all: update lib-apt lib-dnf folders
+all: update lib folders
+
+snap:
+	sudo snap install clion --classic
+	sudo snap install intellij-idea-community --classic
+	sudo snap install android-studio --classic
 
 flatpak:
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -45,10 +50,7 @@ update: folders
 	cp -rf local/* ~/.local/
 	cp -rf config/* ~/.config/
 	cp bashrc ~/.bashrc
-
-update-mate:
 	dconf load /org/mate/terminal/ < mate/dconf/terminal
-	$(INSTALL) `cat pkg/mate | grep -v '^#'`
 
 purge:
 	$(UPDATE)
