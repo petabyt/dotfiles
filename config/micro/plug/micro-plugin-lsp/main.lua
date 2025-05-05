@@ -173,7 +173,7 @@ function preRune(bp, r)
 end
 
 -- when a new character is types, the document changes
-function onRune(bp, r)
+function __onRune(bp, r)
 	local filetype = bp.Buf:FileType()
 	if cmd[filetype] == nil then
 		return
@@ -207,49 +207,49 @@ function onRune(bp, r)
 end
 
 -- alias functions for any kind of change to the document
-function onMoveLinesUp(bp) onRune(bp) end
-
-function onMoveLinesDown(bp) onRune(bp) end
-
-function onDeleteWordRight(bp) onRune(bp) end
-
-function onDeleteWordLeft(bp) onRune(bp) end
-
-function onInsertNewline(bp) onRune(bp) end
-
-function onInsertSpace(bp) onRune(bp) end
-
-function onBackspace(bp) onRune(bp) end
-
-function onDelete(bp) onRune(bp) end
-
-function onInsertTab(bp) onRune(bp) end
-
-function onUndo(bp) onRune(bp) end
-
-function onRedo(bp) onRune(bp) end
-
-function onCut(bp) onRune(bp) end
-
-function onCutLine(bp) onRune(bp) end
-
-function onDuplicateLine(bp) onRune(bp) end
-
-function onDeleteLine(bp) onRune(bp) end
-
-function onIndentSelection(bp) onRune(bp) end
-
-function onOutdentSelection(bp) onRune(bp) end
-
-function onOutdentLine(bp) onRune(bp) end
-
-function onIndentLine(bp) onRune(bp) end
-
-function onPaste(bp) onRune(bp) end
-
-function onPlayMacro(bp) onRune(bp) end
-
-function onAutocomplete(bp) onRune(bp) end
+--function onMoveLinesUp(bp) onRune(bp) end
+--
+--function onMoveLinesDown(bp) onRune(bp) end
+--
+--function onDeleteWordRight(bp) onRune(bp) end
+--
+--function onDeleteWordLeft(bp) onRune(bp) end
+--
+--function onInsertNewline(bp) onRune(bp) end
+--
+--function onInsertSpace(bp) onRune(bp) end
+--
+--function onBackspace(bp) onRune(bp) end
+--
+--function onDelete(bp) onRune(bp) end
+--
+--function onInsertTab(bp) onRune(bp) end
+--
+--function onUndo(bp) onRune(bp) end
+--
+--function onRedo(bp) onRune(bp) end
+--
+--function onCut(bp) onRune(bp) end
+--
+--function onCutLine(bp) onRune(bp) end
+--
+--function onDuplicateLine(bp) onRune(bp) end
+--
+--function onDeleteLine(bp) onRune(bp) end
+--
+--function onIndentSelection(bp) onRune(bp) end
+--
+--function onOutdentSelection(bp) onRune(bp) end
+--
+--function onOutdentLine(bp) onRune(bp) end
+--
+--function onIndentLine(bp) onRune(bp) end
+--
+--function onPaste(bp) onRune(bp) end
+--
+--function onPlayMacro(bp) onRune(bp) end
+--
+--function onAutocomplete(bp) onRune(bp) end
 
 function onEscape(bp)
 	if splitBP ~= nil then
@@ -275,15 +275,17 @@ function preInsertNewline(bp)
 end
 
 function preSave(bp)
-	if config.GetGlobalOption("lsp.formatOnSave") then
-		onRune(bp)
-		formatAction(bp, function()
-			bp:Save()
-		end)
-	end
+	--__onRune(bp)
+	--if config.GetGlobalOption("lsp.formatOnSave") then
+	--	__onRune(bp)
+	--	formatAction(bp, function()
+	--		bp:Save()
+	--	end)
+	--end
 end
 
 function onSave(bp)
+	__onRune(bp)
 	local filetype = bp.Buf:FileType()
 	if cmd[filetype] == nil then
 		return
@@ -438,7 +440,7 @@ function onStdout(filetype)
 			currentAction[filetype] = {}
 		elseif data.method == "window/showMessage" or data.method == "window\\/showMessage" then
 			if filetype == micro.CurPane().Buf:FileType() then
-				micro.InfoBar():Message(data.params.message)
+				--micro.InfoBar():Message(data.params.message)
 			else
 				micro.Log(filetype .. " message " .. data.params.message)
 			end
@@ -464,7 +466,7 @@ end
 function onStderr(text)
 	micro.Log("ONSTDERR", text)
 	if not isIgnoredMessage(text) then
-		micro.InfoBar():Message(text)
+		--micro.InfoBar():Message(text)
 	end
 end
 
@@ -832,10 +834,10 @@ function formatActionResponse(callback)
 		-- put the cursor back where it was
 		bp.Cursor:GotoLoc(xy)
 		-- if any changes were applied
-		if #edits > 0 then
+--		if #edits > 0 then
 			-- tell the server about the changed document
-			onRune(bp)
-		end
+		__onRune(bp)
+--		end
 
 		if callback ~= nil then
 			callback(bp)

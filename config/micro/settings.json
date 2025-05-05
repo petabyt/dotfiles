@@ -1,3 +1,6 @@
 {
-    "colorscheme": "monokai-dark"
+    "colorscheme": "monokai-dark",
+    "lsp.autocompleteDetails": true,
+    "lsp.server": "cpp=clangd,c=clangd",
+    "linter": false,
 }
