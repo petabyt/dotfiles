@@ -98,11 +98,5 @@ editor:
 git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 
-# x240 thinkpad tweak
-# See https://gist.github.com/petabyt/1ad0e074bcf78894d7aaee9e94c50c11
-thinkpad:
-	# Fix janky Firefox scrolling
-	echo "export MOZ_USE_XINPUT2=1" >> /etc/profile
-
-	# Nifty fingerprint reading
-	sudo apt install fprintd
+vbox:
+	sudo usermod -a -G vboxusers $$USER

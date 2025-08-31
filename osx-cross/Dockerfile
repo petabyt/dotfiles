@@ -4,9 +4,10 @@ RUN apt update && apt install -y git cmake ninja-build clang build-essential cur
 
 RUN <<EOR
 	cd
-    git clone https://github.com/swiftlang/swift-corelibs-libdispatch.git --depth 1 --recurse-submodules 
+    git clone https://github.com/swiftlang/swift-corelibs-libdispatch.git --depth 1 --recurse-submodules
     cd swift-corelibs-libdispatch
-    cmake -G Ninja -B build -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+    #cmake -G Ninja -B build -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local/cctools -G Ninja -B build -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
     cmake --build build
     sudo cmake --install build
 	cd .. && rm -rf swift-corelibs-libdispatch 
