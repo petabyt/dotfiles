@@ -1,9 +1,0 @@
-#!/bin/bash
-# Dummy pkg-config to return error for all packages
-
-if [ "$1" == "--version" ]; then
-    echo "0.29.2"
-    exit 0
-else
-    exit 1
-fi

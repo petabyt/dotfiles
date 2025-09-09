@@ -1,42 +1,10 @@
-FROM ubuntu:24.10
+# syntax=docker/dockerfile:1
 
-RUN apt update && apt install -y git cmake ninja-build clang build-essential curl sudo
+ARG OSXCROSS_VERSION=latest
+FROM --platform=$BUILDPLATFORM crazymax/osxcross:${OSXCROSS_VERSION}-ubuntu AS osxcross
 
-RUN <<EOR
-	cd
-    git clone https://github.com/swiftlang/swift-corelibs-libdispatch.git --depth 1 --recurse-submodules
-    cd swift-corelibs-libdispatch
-    #cmake -G Ninja -B build -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
-    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/local/cctools -G Ninja -B build -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
-    cmake --build build
-    sudo cmake --install build
-	cd .. && rm -rf swift-corelibs-libdispatch 
-EOR
-
-RUN <<EOR
-	cd
-    git clone https://github.com/tpoechtrager/apple-libtapi.git --depth 1
-    cd apple-libtapi
-    ./build.sh
-    ./install.sh
-    cd .. && rm -rf apple-libtapi
-EOR
-
-RUN <<EOR
-	cd
-    git clone https://github.com/tpoechtrager/cctools-port.git
-    cd cctools-port/cctools
-    ./configure --prefix=/usr/local/cctools
-    make -j$(nproc)
-    sudo make install
-    cd .. && rm -rf cctools-port
-EOR
-
-RUN <<EOR
-	cd
-    git clone https://github.com/dmikushin/install_name_tool.git
-    cd install_name_tool
-    cmake -G Ninja -B build
-    cmake --build build
-    sudo cp build/install_name_tool /usr/local/bin/
-EOR
+FROM ubuntu
+RUN apt-get update && apt-get install -y clang lld libc6-dev cmake ninja-build
+ENV PATH="/osxcross/bin:$PATH"
+ENV LD_LIBRARY_PATH="/osxcross/lib:$LD_LIBRARY_PATH"
+COPY --from=osxcross /osxcross /osxcross
