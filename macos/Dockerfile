@@ -8,3 +8,4 @@ RUN apt-get update && apt-get install -y clang lld libc6-dev cmake ninja-build
 ENV PATH="/osxcross/bin:$PATH"
 ENV LD_LIBRARY_PATH="/osxcross/lib:$LD_LIBRARY_PATH"
 COPY --from=osxcross /osxcross /osxcross
+COPY toolchain2.cmake /osxcross/

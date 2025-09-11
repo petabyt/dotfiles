@@ -95,6 +95,12 @@ editor:
 	micro -plugin install filemanager
 	git config --global core.editor "micro"
 
+dockers:
+	cd arm && make build
+	cd amd && make build
+	cd amd/22.04 && make build
+	cd osx-cross && make build
+
 git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 
