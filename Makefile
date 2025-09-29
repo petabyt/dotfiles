@@ -1,3 +1,5 @@
+# -DCMAKE_TOOLCHAIN_FILE=/opt/wasi-sdk/share/cmake/wasi-sdk.cmake
+
 HOME := $(shell echo ~)
 
 is_apt =
@@ -31,9 +33,7 @@ endif
 all: update lib folders
 
 snap:
-	sudo snap install clion --classic
-	sudo snap install intellij-idea-community --classic
-	sudo snap install android-studio --classic
+	sudo snap install `cat pkg/snap | grep -v '^#'`
 
 flatpak:
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -60,39 +60,10 @@ appimage:
 	sudo wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool && sudo chmod +x /usr/local/bin/appimagetool
 	sudo wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O /usr/local/bin/linuxdeploy && sudo chmod +x /usr/local/bin/linuxdeploy
 
-# attempt to install python2 pip2 to compile legacy stuff
-python2:
-	sudo apt install python2
-	sudo apt install python-is-python2
-	wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
-	sudo python2.7 get-pip.py
-	rm get-pip.py
-
-androidtools:
-	sudo apt install android-sdk android-sdk-platform-23 
-	sudo apt install google-android-ndk-installer
-	sudo apt install cmake
-
-	# Accept SDK licenses
-	@echo 'Accepting license..'
-	git clone https://github.com/Shadowstyler/android-sdk-licenses.git
-	sudo cp -a android-sdk-licenses/*-license /usr/lib/android-sdk/licenses 
-	rm -rf android-sdk-licenses
-
-armcc: $(HOME)/gcc-arm-none-eabi
-
-# 2016 arm compiler
-$(HOME)/gcc-arm-none-eabi:
-	cd ~/Downloads; wget "https://developer.arm.com/-/media/Files/downloads/gnu-rm/5_4-2016q3/gcc-arm-none-eabi-5_4-2016q3-20160926-linux.tar.bz2?revision=111dee36-f88b-4672-8ac6-48cf41b4d375?product=GNU%20Arm%20Embedded%20Toolchain%20Downloads,32-bit,,Linux,5-2016-q3-update"
-	cd ~/Downloads; tar -xjf gcc*; mv gcc-arm-none-eabi-5_4-2016q3 ~/gcc-arm-none-eabi
-	chmod +x ~/gcc-arm-none-eabi/bin/*
-	echo 'export PATH=$PATH:~/gcc-arm-none-eabi/bin' >> ~/.bashrc
-
 # Nice text editor
 editor:
 	curl https://getmic.ro | bash
-	sudo mv micro /bin/micro
-	micro -plugin install filemanager
+	sudo mv micro /usr/local/bin/micro
 	git config --global core.editor "micro"
 
 dockers:
@@ -101,8 +72,11 @@ dockers:
 	cd amd/22.04 && make build
 	cd osx-cross && make build
 
+clone:
+	cd $(HOME)/Pulled && git clone https://github.com/paulmcauley/klassy
+
 git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 
-vbox:
-	sudo usermod -a -G vboxusers $$USER
+usermod:
+	sudo usermod -a -G vboxusers,docker,wireshark,libvirt,kvm,vboxusers $$USER

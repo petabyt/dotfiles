@@ -1,2 +1,4 @@
 gamescope --mangoapp -w 3440 -h 1440 -b -f --xwayland-count 2 --adaptive-sync -- %command% -noninteractive
 LD_PRELOAD="" gamescope --mangoapp -w 1920 -h 1080 -b -f --xwayland-count 2 --force-grab-cursor --adaptive-sync -- %command% -noninteractive
+
+gamescope --mangoapp -b -f --xwayland-count 2 --adaptive-sync -- %command%

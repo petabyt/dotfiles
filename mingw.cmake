@@ -18,7 +18,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND NOT MINGW_SYSROOT)
 endif()
 message(STATUS "MINGW_SYSROOT: ${MINGW_SYSROOT}")
 
-
 # Define the compilers to use for C and C++
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)

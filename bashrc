@@ -129,3 +129,5 @@ fi
 if ! command -v open &> /dev/null; then
   alias open="xdg-open"
 fi
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/osxcross/lib

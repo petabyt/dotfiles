@@ -17,6 +17,7 @@ device-tree-compiler
 acpica-tools
 qemu-system-arm
 qemu-system-x86
+u-boot-tools
 
 mate-desktop-environment-extras
 mate-themes
