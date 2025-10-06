@@ -1,6 +1,7 @@
 gcc
 clang
 make
+emscripten
 ninja-build meson
 golang wget curl dillo links git xclip wl-clipboard
 cmake python3-pip gimp nodejs
@@ -27,3 +28,4 @@ glogg
 flex
 bison
 screen
+wine

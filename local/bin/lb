@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/daniel/Pulled/ladybird/build/bin/Ladybird $@
+/home/daniel/Pulled/ladybird/Build/release/bin/Ladybird $@

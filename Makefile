@@ -25,7 +25,7 @@ INSTALL := sudo apt install -m
 lib:
 	sudo dpkg --add-architecture i386
 	sudo apt update
-	sudo apt install `cat pkg/all pkg/apt | grep -v '^#'`
+	sudo apt install `cat pkg/all pkg/apt pkg/apt-gamescope | grep -v '^#'`
 else
 $(error unknown distro)
 endif
@@ -33,11 +33,14 @@ endif
 all: update lib folders
 
 snap:
-	sudo snap install `cat pkg/snap | grep -v '^#'`
+	sudo snap install clion --classic
+	sudo snap install intellij-idea-community --classic
+	sudo snap install android-studio --classic
+	sudo snap install docker --classic
 
 flatpak:
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-	flatpak install `cat pkg/flatpak | grep -v '^#'`
+	flatpak install -y `cat pkg/flatpak | grep -v '^#'`
 
 folders: $(HOME)/Pulled
 
@@ -66,14 +69,17 @@ editor:
 	sudo mv micro /usr/local/bin/micro
 	git config --global core.editor "micro"
 
+brave:	
+	curl -fsS https://dl.brave.com/install.sh | sh
+
 dockers:
 	cd arm && make build
 	cd amd && make build
 	cd amd/22.04 && make build
-	cd osx-cross && make build
+	cd macos && make build
 
 clone:
-	cd $(HOME)/Pulled && git clone https://github.com/paulmcauley/klassy
+	- cd $(HOME)/Pulled && git clone https://github.com/paulmcauley/klassy --depth 1
 
 git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/

@@ -19,19 +19,14 @@ qemu-system-arm
 qemu-system-x86
 u-boot-tools
 
-mate-desktop-environment-extras
 mate-themes
 caja pluma
 caja-open-terminal
-mate-icon-theme
-gnome-themes-extra
-adwaita-icon-theme
-marco
 eom
-engrampa
-mate-terminal
-ayatana-indicator
+gdm3
 
 virtualbox virtualbox-ext-pack
 
 python3-pyelftools
+steam-installer
+audacious
