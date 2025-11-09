@@ -1,33 +1,37 @@
 # -DCMAKE_TOOLCHAIN_FILE=/opt/wasi-sdk/share/cmake/wasi-sdk.cmake
 
 HOME := $(shell echo ~)
+USER := $$USER
 
-is_apt =
 ifeq ($(shell lsb_release -is), Ubuntu)
-    is_apt = yes
+    IS_APT := yes
 endif
 ifeq ($(shell lsb_release -is), Debian)
-    is_apt = yes
+    IS_APT := yes
 endif
-
-# NOTE: grep -v '^#' removes comments
 ifeq ($(shell lsb_release -is), Fedora)
-UPDATE := sudo dnf update
-REMOVE := -sudo dnf remove
-INSTALL := sudo dnf install
+	IS_FEDORA := yes
+endif
+ARCH := $(shell uname -m)
+
+ifdef IS_FEDORA
 lib:
 	sudo dnf update
-	sudo dnf install `cat pkg/all pkg/dnf | grep -v '^#'`
-else ifdef is_apt
-UPDATE := sudo apt update
-REMOVE := -sudo apt remove
-INSTALL := sudo apt install -m
+	sudo dnf install `cat pkg/all pkg/fedora* | grep -v '^#'`
+else ifdef IS_APT
 lib:
-	sudo dpkg --add-architecture i386
 	sudo apt update
-	sudo apt install `cat pkg/all pkg/apt pkg/apt-gamescope | grep -v '^#'`
+	sudo apt install -m `cat pkg/all pkg/apt* | grep -v '^#'`
+purge:
+	sudo apt remove `cat pkg/bloat | grep -v '^#'`
 else
 $(error unknown distro)
+endif
+
+ifeq ($(shell uname -a),x86_64)
+lib: add-i386
+add-i386:
+	sudo dpkg --add-architecture i386
 endif
 
 all: update lib folders
@@ -36,16 +40,13 @@ snap:
 	sudo snap install clion --classic
 	sudo snap install intellij-idea-community --classic
 	sudo snap install android-studio --classic
-	sudo snap install docker --classic
 
 flatpak:
 	flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 	flatpak install -y `cat pkg/flatpak | grep -v '^#'`
 
-folders: $(HOME)/Pulled
-
-$(HOME)/Pulled:
-	mkdir ~/Pulled
+folders: 
+	mkdir -p ~/Pulled
 
 update: folders
 	cp gitconfig ~/.gitconfig
@@ -55,22 +56,28 @@ update: folders
 	cp bashrc ~/.bashrc
 	dconf load /org/mate/terminal/ < mate/dconf/terminal
 
-purge:
-	$(UPDATE)
-	$(REMOVE) ubuntu-mate-welcome ubuntu-mate-guide
-
-appimage:
+install-appimages:
 	sudo wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O /usr/local/bin/appimagetool && sudo chmod +x /usr/local/bin/appimagetool
 	sudo wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O /usr/local/bin/linuxdeploy && sudo chmod +x /usr/local/bin/linuxdeploy
 
-# Nice text editor
-editor:
+install-editor:
 	curl https://getmic.ro | bash
 	sudo mv micro /usr/local/bin/micro
 	git config --global core.editor "micro"
 
-brave:	
+install-brave:
 	curl -fsS https://dl.brave.com/install.sh | sh
+
+install-docker:
+	curl -fsSL https://get.docker.com -o get-docker.sh
+	sh get-docker.sh
+
+update-alternatives:
+	sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/micro 100
+	sudo update-alternatives --set editor /usr/local/bin/micro
+
+install-dev-files:
+	cp mingw.cmake /usr/x86_64-w64-mingw32
 
 dockers:
 	cd arm && make build
@@ -80,9 +87,14 @@ dockers:
 
 clone:
 	- cd $(HOME)/Pulled && git clone https://github.com/paulmcauley/klassy --depth 1
+	- cd $(HOME)/Pulled && git clone https://github.com/ValveSoftware/gamescope.git --depth 1 --recurse-submodules
 
-git:
+http-git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 
 usermod:
 	sudo usermod -a -G vboxusers,docker,wireshark,libvirt,kvm,vboxusers $$USER
+
+switch-remote:
+	-git remote remove origin
+	git remote add origin git@github.com:petabyt/dotfiles.git

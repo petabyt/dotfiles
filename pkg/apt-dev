@@ -7,3 +7,42 @@ libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconf
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev
 libssl-dev libstdc++-12-dev
+
+
+linux-libc-dev
+libvdpau-dev
+libvulkan-dev
+libxvmc-dev
+libxv-dev
+libva-dev
+zlib1g-dev
+libzstd-dev
+libexpat1-dev
+libelf-dev
+libglvnd-dev
+libunwind-dev
+wayland-protocols
+libwayland-dev
+libwayland-egl-backend-dev
+libx11-dev
+libxext-dev
+libxfixes-dev
+libxcb-glx0-dev
+libxcb-shm0-dev
+libxcb1-dev
+libx11-xcb-dev
+libxcb-dri2-0-dev
+libxcb-dri3-dev
+libxcb-present-dev
+libxcb-sync-dev
+libxshmfence-dev
+x11proto-dev
+libxxf86vm-dev
+libxcb-xfixes0-dev
+libxcb-randr0-dev
+libxrandr-dev
+libxcb-sync-dev
+libsensors-dev
+libx11-dev
+libudev-dev
+libpciaccess-dev

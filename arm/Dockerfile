@@ -31,9 +31,9 @@ RUN apt-get update && \
         libexif-dev \
         libgtk-3-dev \
         libc6-dev \
-        build-essential \
-        python3-minimal && \
-    apt-get clean
+        build-essential
+
+RUN apt-get clean
 
 # Download appimage tools and remove magic bytes that break interpreter
 RUN wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-aarch64.AppImage -O /usr/local/bin/appimagetool && chmod +x /usr/local/bin/appimagetool

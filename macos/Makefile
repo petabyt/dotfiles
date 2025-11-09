@@ -6,3 +6,4 @@ run:
 
 install:
 	sudo docker run daniel-osx tar -c -C / osxcross | tar x
+	sudo cp -r osxcross /usr/local/
