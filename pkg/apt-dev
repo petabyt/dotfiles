@@ -46,3 +46,4 @@ libsensors-dev
 libx11-dev
 libudev-dev
 libpciaccess-dev
+libpcap-dev

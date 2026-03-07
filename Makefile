@@ -47,6 +47,7 @@ flatpak:
 
 folders: 
 	mkdir -p ~/Pulled
+	mkdir -p ~/Archive
 
 update: folders
 	cp gitconfig ~/.gitconfig
@@ -77,7 +78,7 @@ update-alternatives:
 	sudo update-alternatives --set editor /usr/local/bin/micro
 
 install-dev-files:
-	cp mingw.cmake /usr/x86_64-w64-mingw32
+	sudo cp mingw.cmake /usr/x86_64-w64-mingw32
 
 dockers:
 	cd arm && make build
@@ -88,6 +89,7 @@ dockers:
 clone:
 	- cd $(HOME)/Pulled && git clone https://github.com/paulmcauley/klassy --depth 1
 	- cd $(HOME)/Pulled && git clone https://github.com/ValveSoftware/gamescope.git --depth 1 --recurse-submodules
+	- echo "cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Release"
 
 http-git:
 	git config --global url.ssh://git@github.com/.insteadOf https://github.com/

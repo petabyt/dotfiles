@@ -7,7 +7,9 @@ RUN apt-get update && \
         file \
         xz-utils \
         wget \
+        curl \
         make \
+        python3 pip \
         ca-certificates \
         ninja-build \
         meson \
@@ -31,7 +33,9 @@ RUN apt-get update && \
         libexif-dev \
         libgtk-3-dev \
         libc6-dev \
-        build-essential
+        build-essential \
+        flatpak \
+        flatpak-builder
 
 RUN apt-get clean
 
@@ -41,3 +45,8 @@ RUN wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous
 
 RUN dd if=/dev/zero bs=1 count=4 seek=8 of=/usr/local/bin/linuxdeploy conv=notrunc
 RUN dd if=/dev/zero bs=1 count=4 seek=8 of=/usr/local/bin/appimagetool conv=notrunc
+
+RUN pip install flatpak-node-generator --break-system-packages
+
+RUN flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo && \
+    flatpak install flathub org.flatpak.Builder
