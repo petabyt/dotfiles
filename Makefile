@@ -25,7 +25,8 @@ lib:
 purge:
 	sudo apt remove `cat pkg/bloat | grep -v '^#'`
 else
-$(error unknown distro)
+lib:
+	echo "assuming arch"
 endif
 
 ifeq ($(shell uname -a),x86_64)
