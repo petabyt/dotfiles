@@ -101,3 +101,14 @@ usermod:
 switch-remote:
 	-git remote remove origin
 	git remote add origin git@github.com:petabyt/dotfiles.git
+
+define set_genre
+--exec "ffmpeg -i {} -metadata genre='$(1)' -codec copy 'temp.mp3' && mv 'temp.mp3' {}"
+endef
+YT_DLP_CMD := cd ~/Music && yt-dlp -x --audio-format mp3 --audio-quality 0 --download-archive songs.txt --embed-metadata --embed-thumbnail -o "%(playlist_index)s - %(title)s.%(ext)s"
+music:
+	$(YT_DLP_CMD) $(call set_genre,Techno) "https://music.youtube.com/playlist?list=PLDvIMZncITYkAMTk4yItk5UmSIWKsbAdl"
+	$(YT_DLP_CMD) $(call set_genre,Grunge) "https://music.youtube.com/playlist?list=PLDvIMZncITYm_1pAoWQs_yU9zrq_P_pGC"
+	$(YT_DLP_CMD) $(call set_genre,Rock) "https://music.youtube.com/playlist?list=PLDvIMZncITYktrLaE5k7oSoFlCIqFHfw_"
+	$(YT_DLP_CMD) $(call set_genre,Dubstep) "https://music.youtube.com/playlist?list=PLDvIMZncITYljT2BoCNevVndDmele8T1F"
+	
